@@ -21,7 +21,7 @@ import numpy as np
 from gensim.models import Word2Vec
 from sklearn.ensemble import RandomForestClassifier
 
-from utils import Parser
+from utils import review_to_wordlist, review_to_sentences
 
 
 # ****** Define functions to create average word vectors
@@ -79,7 +79,7 @@ def getAvgFeatureVecs(reviews, model, num_features):
 def getCleanReviews(reviews):
     clean_reviews = []
     for review in reviews["review"]:
-        clean_reviews.append(Parser.review_to_wordlist(review,
+        clean_reviews.append(review_to_wordlist(review,
                                                        remove_stopwords=True))
     return clean_reviews
 
@@ -114,11 +114,11 @@ if __name__ == '__main__':
 
     print "Parsing sentences from training set"
     for review in train["review"]:
-        sentences += Parser.review_to_sentences(review, tokenizer)
+        sentences += review_to_sentences(review, tokenizer)
 
     print "Parsing sentences from unlabeled set"
     for review in unlabeled_train["review"]:
-        sentences += Parser.review_to_sentences(review, tokenizer)
+        sentences += review_to_sentences(review, tokenizer)
 
     # ****** Set parameters and train the word2vec model
 

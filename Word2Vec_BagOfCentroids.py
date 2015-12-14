@@ -23,7 +23,8 @@ import re
 from nltk.corpus import stopwords
 import numpy as np
 import os
-from utils import Parser
+
+from utils import review_to_wordlist
 
 
 # Define a function to create bags of centroids
@@ -106,13 +107,13 @@ if __name__ == '__main__':
     print "Cleaning training reviews"
     clean_train_reviews = []
     for review in train["review"]:
-        clean_train_reviews.append( Parser.review_to_wordlist( review, \
+        clean_train_reviews.append(review_to_wordlist( review, \
             remove_stopwords=True ))
 
     print "Cleaning test reviews"
     clean_test_reviews = []
     for review in test["review"]:
-        clean_test_reviews.append( Parser.review_to_wordlist( review, \
+        clean_test_reviews.append(review_to_wordlist( review, \
             remove_stopwords=True ))
 
 
