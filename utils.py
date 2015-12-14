@@ -10,6 +10,7 @@ import numpy as np
 from bs4 import BeautifulSoup
 from nltk.corpus import stopwords
 
+
 def review_to_wordlist( review, remove_stopwords=False ):
     """Function to convert a document to a sequence of words,
     optionally removing stop words.  Returns a list of words."""
