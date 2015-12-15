@@ -146,7 +146,7 @@ if __name__ == '__main__':
 
     # It can be helpful to create a meaningful model name and
     # save the model for later use. You can load it later using Word2Vec.load()
-    model_name = "300features_40minwords_10context"
+    model_name = "300features_40minwords_10context.w2v.model"
     model.save(model_name)
 
     # ****** Create average vectors for the training and test sets
@@ -168,10 +168,4 @@ if __name__ == '__main__':
     print "Fitting a random forest to labeled training data..."
     forest = forest.fit(trainDataVecs, train["sentiment"])
 
-    # Test & extract results
-    result = forest.predict(testDataVecs)
-
-    # Write the test results
-    output = pd.DataFrame(data={"id": test["id"], "sentiment": result})
-    output.to_csv("Word2Vec_AverageVectors.csv", index=False, quoting=3)
-    print "Wrote Word2Vec_AverageVectors.csv"
+    # TODO: save the forest model
