@@ -103,6 +103,10 @@ if __name__ == '__main__':
 
     from os.path import join, dirname
 
+    # Set logging
+    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s',
+        level=logging.INFO)
+
     # Read data from files
     train_file = join(dirname(__file__), 'data', 'labeledTrainData.tsv')
     train = pd.read_csv(train_file, header=0, delimiter="\t", quoting=3)
@@ -135,11 +139,6 @@ if __name__ == '__main__':
         sentences += review_to_sentences(review_text, tokenizer)
 
     # ****** Set parameters and train the word2vec model
-
-    # Import the built-in logging module and configure it so that Word2Vec
-    # creates nice output messages
-    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s',
-        level=logging.INFO)
 
     # Set values for various parameters
     num_features = 300    # Word vector dimensionality
