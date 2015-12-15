@@ -26,9 +26,6 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-# ****** Define functions to create average word vectors
-
-
 def make_feature_vec(articles_words, model, num_features):
     """Average all of the word vectors in a given paragraph.
 
@@ -123,8 +120,6 @@ if __name__ == '__main__':
      "and %d unlabeled reviews\n" % (train["review"].size,
      test["review"].size, unlabeled_train["review"].size )
 
-    # Load the punkt tokenizer
-    tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 
     # ****** Split the labeled and unlabeled training sets into clean sentences
 
@@ -132,11 +127,11 @@ if __name__ == '__main__':
 
     print "Parsing sentences from training set"
     for review_text in train["review"]:
-        sentences += review_to_sentences(review_text, tokenizer)
+        sentences += review_to_sentences(review_text)
 
     print "Parsing sentences from unlabeled set"
     for review_text in unlabeled_train["review"]:
-        sentences += review_to_sentences(review_text, tokenizer)
+        sentences += review_to_sentences(review_text)
 
     # ****** Set parameters and train the word2vec model
 

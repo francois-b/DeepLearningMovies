@@ -34,9 +34,12 @@ def review_to_wordlist( review, remove_stopwords=False ):
 
 
 # Define a function to split a review into parsed sentences
-def review_to_sentences( review, tokenizer, remove_stopwords=False ):
+def review_to_sentences(review, tokenizer=None, remove_stopwords=False):
     """Function to split a review into parsed sentences. Returns a
     list of sentences, where each sentence is a list of words."""
+
+    if not tokenizer:
+        tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
 
     # 1. Use the NLTK tokenizer to split the paragraph into sentences
     raw_sentences = tokenizer.tokenize(review.decode('utf8').strip())
